@@ -9,12 +9,17 @@ get '/secret' do
   'This is my secret stash'
 end
 
-get '/cat' do 
-  "<div style='border: 3px dashed red'>
-   <img src='https://i.imgur.com/jFaSxym.png'>
-   </div>"
+get '/random-cat' do 
+  @name= ["Amigo", "Misty", "Almond"].sample 
+  erb(:index)
 end
 
+post '/named-cat' do 
+  p params
+  @name= params[:name]
+  erb(:index)
+end
 
-# <div> <img src="pic_trulli.jpg" alt="Trulli" width="500" height="333"> </div>
-
+get '/cat-form' do
+  erb :cat_form
+end
